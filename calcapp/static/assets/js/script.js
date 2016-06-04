@@ -15,6 +15,8 @@ $(document).ready(function(){
     totaldiv.text("0");
     $("#numbers a").not("#clear,#clearall").click(function(){
 		number += $(this).text();
+        alert($(this).text());
+        alert(number);
 		totaldiv.text(number);
 		testNumLength(number);
     });
