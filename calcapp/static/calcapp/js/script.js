@@ -14,6 +14,7 @@ $(document).ready(function(){
     var totaldiv = $("#total");
     var query = $("#query");
     totaldiv.text("0");
+
     $("#numbers a").not("#clear,#clearall").click(function(){
 		number += $(this).text();
 		totaldiv.text(number);
@@ -36,25 +37,28 @@ $(document).ready(function(){
     var querystring = "";
     $("#equals").click(function(){
     	if (operator === "+"){
-            querystring = number + operator + newnumber + "=" ;
+            querystring = newnumber + operator + number + "=" ;
     		number = (parseInt(number, 10) + parseInt(newnumber,10)).toString(10);
     	} else if (operator === "-"){
-            querystring = number + operator + newnumber + "=" ;
+            querystring = newnumber + operator + number + "=" ;
     		number = (parseInt(newnumber, 10) - parseInt(number,10)).toString(10);
     	} else if (operator === "/"){
-            querystring = number + operator + newnumber + "=" ;
+            querystring = newnumber + operator + number + "=" ;
     		number = (parseInt(newnumber, 10) / parseInt(number,10)).toString(10);
     	} else if (operator === "*"){
-            querystring = number + operator + newnumber + "=" ;
+            querystring = newnumber + operator + number + "=" ;
     		number = (parseInt(newnumber, 10) * parseInt(number,10)).toString(10);
     	}
     	totaldiv.text(number);
     	testNumLength(number);
         var querystringfinal = querystring + number; 
         query.text(querystringfinal);
+        query.append('<button type="submit">POST</button>');
+        document.getElementById('query_value').value = querystringfinal;
         querystring = "";
         querystringfinal = "";
     	// number = "";
     	newnumber = "";
     });
+
 });

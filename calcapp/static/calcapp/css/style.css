@@ -6,8 +6,8 @@ body, div, a {
 
 #calculator {
 	background-color: #fff;
-	width: 310px;
-	height: 460px;
+	width: 270px;
+	height: 400px;
 	border: 3px black solid;
 	margin: 10px auto;
 	padding: 5px;
@@ -17,7 +17,62 @@ body, div, a {
 	border-radius: 10px;
 }
 
-#calculator a {
+#total {
+    height: 70px;
+    width: 250px;
+    margin:0 auto;
+    background-color: #fff;
+    margin-bottom: 15px;
+    text-align: right;
+    font-size: 60px;
+    padding: 0px 5px;
+}
+
+#operators a {
+	width: 45px;
+	height: 45px;
+	font-size: 39px;
+	padding: 2px;
+	margin: auto;
+}
+
+#numbers a {
+	width: 50px;
+	height: 50px;
+	font-size: 32px;
+	/*padding: 10px;*/
+	margin: 15px;
+}
+
+
+#numbers, #operators {
+	margin: 5px 5px;	
+}
+
+.btn-round {
+    width: 42px;
+    height: 42px;
+    background: #578cf7;
+    border-radius: 50%;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+
+
+}
+
+.equalsign {
+	width: 100px;
+	height: 30px;
+	
+	margin-top: 15px;
+	background: #11b948;
+	/*margin: auto; */
+}
+
+
+
+/*#calculator a {
 	display: block;
     float: left;
     cursor: pointer;
@@ -37,13 +92,6 @@ body, div, a {
 	margin: auto;	
 }
 
-#operators a {
-	width: 45px;
-	height: 45px;
-	font-size: 39px;
-	padding: 2px;
-	margin: 5px 6px;
-}
 
 #numbers a {
 	width: 50px;
@@ -53,13 +101,4 @@ body, div, a {
 	margin: 5px 15px;
 }
 
-#total {
-    height: 70px;
-    width: 300px;
-    margin:auto;
-    background-color:white;
-    margin-bottom: 5px;
-    text-align: right;
-    font-size: 60px;
-    padding: 0px 5px;
-}
+*/
