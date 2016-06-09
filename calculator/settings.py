@@ -27,6 +27,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+        },
+        "ROUTING": "calculator.routing.channel_routing",
+    },
+}
+
 
 # Application definition
 
@@ -39,8 +49,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'calcapp',
     'channels',
-
 ]
+
+
+WS4REDIS_SUBSCRIBER = 'calculator.redis_store.RedisSubscriber'
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -64,8 +76,10 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.core.context_processors.static',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },

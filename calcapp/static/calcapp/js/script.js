@@ -1,4 +1,18 @@
 $(document).ready(function(){
+
+    var csrftoken = Cookies.get('csrftoken');
+    function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
 	var testNumLength = function(number) {
         if (number.length > 9) {
             totaldiv.text(number.substr(number.length-9,9));
@@ -61,4 +75,27 @@ $(document).ready(function(){
     	newnumber = "";
     });
 
+    $('#calcpost').submit(function(event) {
+        event.preventDefault();
+        var query = document.getElementById('query_value').value;
+        alert(query);
+
+        data_dict = {
+            query_value: query
+        };
+
+        alert(data_dict);
+
+        $.post('/', data_dict,
+            function(
+                data, status) {
+                if (data == "success") {
+
+                    console.log('success');
+            
+                } else {
+                    console.log('error');
+                }
+            });
+    });
 });
