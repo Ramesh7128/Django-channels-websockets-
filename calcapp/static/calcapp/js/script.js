@@ -78,6 +78,7 @@ $(document).ready(function(){
     $('#calcpost').submit(function(event) {
         event.preventDefault();
         var query = document.getElementById('query_value').value;
+        $('#query').empty();
         alert(query);
 
         data_dict = {
