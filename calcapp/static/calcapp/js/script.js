@@ -51,23 +51,23 @@ $(document).ready(function(){
     var querystring = "";
     $("#equals").click(function(){
     	if (operator === "+"){
-            querystring = newnumber + operator + number + "=" ;
+            querystring = newnumber + " " + operator + " " +  number + " = " ;
     		number = (parseInt(number, 10) + parseInt(newnumber,10)).toString(10);
     	} else if (operator === "-"){
-            querystring = newnumber + operator + number + "=" ;
+            querystring = newnumber +  " " + operator +  " " + number + " = " ;
     		number = (parseInt(newnumber, 10) - parseInt(number,10)).toString(10);
     	} else if (operator === "/"){
-            querystring = newnumber + operator + number + "=" ;
+            querystring = newnumber +  " " + operator +  " " + number + " = " ;
     		number = (parseInt(newnumber, 10) / parseInt(number,10)).toString(10);
     	} else if (operator === "*"){
-            querystring = newnumber + operator + number + "=" ;
+            querystring = newnumber +  " " + operator +  " " + number + " = " ;
     		number = (parseInt(newnumber, 10) * parseInt(number,10)).toString(10);
     	}
     	totaldiv.text(number);
     	testNumLength(number);
         var querystringfinal = querystring + number; 
         query.text(querystringfinal);
-        query.append('<button type="submit">POST</button>');
+        query.append('<br><br><button class="btn btn-primary" type="submit">POST</button>');
         document.getElementById('query_value').value = querystringfinal;
         querystring = "";
         querystringfinal = "";
@@ -79,13 +79,10 @@ $(document).ready(function(){
         event.preventDefault();
         var query = document.getElementById('query_value').value;
         $('#query').empty();
-        alert(query);
-
+        
         data_dict = {
             query_value: query
         };
-
-        alert(data_dict);
 
         $.post('/', data_dict,
             function(

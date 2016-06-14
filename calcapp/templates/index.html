@@ -70,7 +70,7 @@
 		<form id="calcpost">
 		{% csrf_token %}
 		<input type="hidden" name="query_value" id="query_value">
-		<h2 class="page-header" id='query'></h2>
+		<h3 id='query'></h3>
 		</form>
 		</div>
 		<div class="col-md-4 portfolio-item">
@@ -90,8 +90,8 @@
             // Handle incoming messages
             socket.onmessage = function(message) {
                 // Decode the JSON
-                alert("Got message " + message.data);
                 var data = JSON.parse(message.data);
+                alert(data)
                 // Create the inner content of the post div
                 var content = "<h2>" + data.query + "</h2>";
                 // See if there's a div to replace it in, or if we should add a new one
