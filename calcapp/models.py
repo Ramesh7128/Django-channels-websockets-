@@ -5,6 +5,7 @@ from channels import Group
 import json
 from django.contrib.sessions.backends.db import SessionStore
 s = SessionStore()
+from django.utils import timezone
 
 
 # Create your models here.
@@ -14,6 +15,7 @@ class Calculations(models.Model):
 
 	calcEntries = models.CharField(max_length=200, blank=False,null=False)
 	user = models.ForeignKey(User, blank=True, null=True)
+	timestamp = models.DateTimeField(default=timezone.now, db_index=True)
 
 	# def save(self, *args, **kwargs):
 	# 	"""
@@ -39,10 +41,10 @@ class Calculations(models.Model):
 	# 	print q
 
 
-	# 	notification = {
-	# 	"query": t,
-	# 	}
-	# 	# Encode and send that message to the whole channels Group for our
+		# notification = {
+		# "query": t,
+		# }
+		# Encode and send that message to the whole channels Group for our
 	# 	# liveblog. Note how you can send to a channel or Group from any part
 	# 	# of Django, not just inside a consumer.
 	# 	Group("calculations").send({

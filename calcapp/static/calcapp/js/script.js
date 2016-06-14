@@ -66,13 +66,42 @@ $(document).ready(function(){
     	totaldiv.text(number);
     	testNumLength(number);
         var querystringfinal = querystring + number; 
-        query.text(querystringfinal);
-        query.append('<br><br><button class="btn btn-primary" type="submit">POST</button>');
-        document.getElementById('query_value').value = querystringfinal;
+        
+        
+
+        var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+        var ws_path = ws_scheme + '://' + window.location.host + window.location.pathname + "stream/";
+        console.log("Connecting to " + ws_path);
+        var socket = new ReconnectingWebSocket(ws_path);
+
+        // sending the value as a websocket message insted of ajax
+        
+        data_dict = {
+            query_value: querystringfinal
+        };
+
+        socket.onopen = function() {
+            socket.send(JSON.stringify(querystringfinal));
+        }
+
+        $.post('/', data_dict,
+            function(
+                data, status) {
+                if (data == "success") {
+
+                    console.log('success');
+            
+                } else {
+                    console.log('error');
+                }
+        });
+
+        
+
         querystring = "";
         querystringfinal = "";
-    	// number = "";
-    	newnumber = "";
+        // number = "";
+        newnumber = "";
     });
 
     $('#calcpost').submit(function(event) {

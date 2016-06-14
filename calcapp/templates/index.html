@@ -16,14 +16,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Calculator
-                    <small>Secondary Text</small>
                 </h1>
             </div>
         </div>
 
 		<div class="row">
-		<div class="col-md-4 portfolio-item">
-		<div id="calculator" class="col-sm-6">
+		<div class="col-md-6 portfolio-item">
+		<div id="calculator">
 			<div id="total">
 			</div>
 			<div id="operators">
@@ -66,14 +65,8 @@
 		</div>
 		</div>
 
-		<div class="col-md-4 portfolio-item">		
-		<form id="calcpost">
-		{% csrf_token %}
-		<input type="hidden" name="query_value" id="query_value">
-		<h3 id='query'></h3>
-		</form>
-		</div>
-		<div class="col-md-4 portfolio-item">
+		
+		<div class="col-md-6 text-center portfolio-item">
 		<div id="chatbox" style="font-size: 14pt;"></div>
 		</div>
 		</div>
@@ -91,9 +84,10 @@
             socket.onmessage = function(message) {
                 // Decode the JSON
                 var data = JSON.parse(message.data);
-                alert(data)
+                alert(data);
+                console.log(data[0]['fields']['calcEntries']);
                 // Create the inner content of the post div
-                var content = "<h2>" + data.query + "</h2>";
+                var content = "<h2>" + data[0]['fields']['calcEntries'] + "</h2>";
                 // See if there's a div to replace it in, or if we should add a new one
                 var x = document.createElement("p");
                 x.innerHTML = content;
