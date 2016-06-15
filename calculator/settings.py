@@ -29,17 +29,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "asgi_redis.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("localhost", 6379)],
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
         },
         "ROUTING": "calculator.routing.channel_routing",
     },
 }
-
-
 # Application definition
 
 INSTALLED_APPS = [
