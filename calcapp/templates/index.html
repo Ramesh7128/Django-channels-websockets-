@@ -4,6 +4,7 @@
 	<head>
 		<title>Calculator</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Monoton|Pattaya" rel="stylesheet">
 		<link rel="stylesheet" href="{% static "calcapp/css/style.css" %}" />
 		<script src="{% static "calcapp/js/js.cookie.js" %}" type="text/javascript"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
@@ -15,7 +16,7 @@
         <!-- Page Header -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Calculator
+                <h1 id="headingfont" class="page-header text-center">Calculator
                 </h1>
             </div>
         </div>
@@ -84,14 +85,19 @@
             socket.onmessage = function(message) {
                 // Decode the JSON
                 var data = JSON.parse(message.data);
-                alert(data);
-                console.log(data[0]['fields']['calcEntries']);
                 // Create the inner content of the post div
-                var content = "<h2>" + data[0]['fields']['calcEntries'] + "</h2>";
+                console.log(data['query_value']);
+                var content = "<h2>" + data['query_value'] + "</h2>";
                 // See if there's a div to replace it in, or if we should add a new one
                 var x = document.createElement("p");
                 x.innerHTML = content;
-                document.getElementById("chatbox").appendChild(x);
+                var parent = document.getElementById("chatbox")
+                parent.insertBefore(x,parent.firstChild);
+                var parentlength = $('#chatbox').children().length;
+                if (parentlength >= 10) {
+                	parent.removeChild(parent.childNodes[9]);
+                }
+        
             };
 
             // Helpful debugging

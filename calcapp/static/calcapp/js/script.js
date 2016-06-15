@@ -77,12 +77,10 @@ $(document).ready(function(){
         // sending the value as a websocket message insted of ajax
         
         data_dict = {
-            query_value: querystringfinal
+            "query_value" : querystringfinal
         };
 
-        socket.onopen = function() {
-            socket.send(JSON.stringify(querystringfinal));
-        }
+        
 
         $.post('/', data_dict,
             function(
@@ -95,6 +93,11 @@ $(document).ready(function(){
                     console.log('error');
                 }
         });
+
+
+        socket.onopen = function() {
+            socket.send(JSON.stringify(data_dict));
+        }
 
         
 
