@@ -85,7 +85,9 @@ $(document).ready(function(){
         $.post('/', data_dict,
             function(
                 data, status) {
-                if (data == "success") {
+                console.log(data, "asldnaksdna");
+                console.log(status,"dsknkjsd");
+                if (status == "success") {
 
                     console.log('success');
             
@@ -107,25 +109,27 @@ $(document).ready(function(){
         newnumber = "";
     });
 
-    $('#calcpost').submit(function(event) {
-        event.preventDefault();
-        var query = document.getElementById('query_value').value;
-        $('#query').empty();
+    // $('#calcpost').submit(function(event) {
+    //     event.preventDefault();
+    //     var query = document.getElementById('query_value').value;
+    //     $('#query').empty();
         
-        data_dict = {
-            query_value: query
-        };
+    //     data_dict = {
+    //         query_value: query
+    //     };
 
-        $.post('/', data_dict,
-            function(
-                data, status) {
-                if (data == "success") {
+    //     $.post('/', data_dict,
+    //         function(
+    //             data, status) {
+    //             console.log(data, "asldnaksdna");
+    //             console.log(status,"dsknkjsd");
+    //             if (status == "success") {
 
-                    console.log('success');
+    //                 console.log('success');
             
-                } else {
-                    console.log('error');
-                }
-            });
-    });
+    //             } else {
+    //                 console.log('error');
+    //             }
+    //         });
+    // });
 });

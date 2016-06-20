@@ -68,7 +68,13 @@
 
 		
 		<div class="col-md-6 text-center portfolio-item">
-		<div id="chatbox" style="font-size: 14pt;"></div>
+		<div id="chatbox" style="font-size: 14pt;">
+			{% if queries %}
+			{% for query in queries %}
+			<p><h2>{{query.calcEntries}}
+			{% endfor %}
+			{% endif %}
+		</div>
 		</div>
 		</div>
 		</div>
