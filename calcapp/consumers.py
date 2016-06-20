@@ -15,7 +15,7 @@ def ws_add(message):
 
 @channel_session_user
 def ws_receive(message):
-	print message.content, "dksjbkjsbd"
+	print message.user, "dksjbkjsbd"
 	# if "no_of_visits" in message.http_session:
 	# 	message.http_session['no_of_visits'] += 1
 	# else:
