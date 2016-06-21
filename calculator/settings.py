@@ -30,8 +30,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
 
 
 CHANNEL_LAYERS = {
@@ -102,6 +100,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+
 
 
 # Password validation
